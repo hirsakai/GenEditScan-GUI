@@ -7,17 +7,17 @@ GenEditScan-GUI is based upon kmer (https://github.com/taitoh1970/kmer).
 
 ### Installing Java
 Please make sure that java 21 or later version is installed and `bin` directory's PATH is valid.  
-Since GenEditScan-GUI is using JavaFX library, we recommend the Full JDK package of Liberica JDK.  
-https://bell-sw.com/libericajdk
+Since GenEditScan-GUI is using JavaFX library, "Full JDK" or "Full JRE" package must be installed (e.g. "Full JDK" package of Liberica JDK: https://bell-sw.com/libericajdk).
+
+The automatically generated source code (zip, tar.gz) includes a pre-built jar file.
+
+## Getting started
 
 ### Windows
-Move to the GenEditScan-GUI directory using a Terminal and type `.\gradlew build`.
+Move to the "GenEditScan" directory and double-click on "GenEditScan_win.vbs" or a shortcut to this vbs file (note: a copy of the vbs file will not function).
 
 ### Mac
-Move to the GenEditScan-GUI directory using a Command Prompt or a PowerShell and type `./gradlew build`.
-
-## How to use the programs
-After building the GenEditScan-GUI, go to the `GenEditScan` directory and start it.  
+Move to the "GenEditScan" directory and launch "GenEditScan_mac.sh" from the terminal or double-click on "GenEditScan_mac.command".
 
 See the `GenEditScan-GUI_UserGuide.pdf` file in the GenEditScan directory for details.
 
