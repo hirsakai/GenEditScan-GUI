@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="mainPaneID" prefHeight="605.0" prefWidth="940.0" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="GenEditScan.CountMerController">
+    <Label layoutX="62.0" layoutY="44.0" text="Vector sequence:" AnchorPane.leftAnchor="40.0"
+           AnchorPane.topAnchor="20.0"/>
+    <TextField fx:id="vectorFileID" editable="false" layoutX="165.0" layoutY="26.0"
+               promptText="Select FASTA sequence (right button)" AnchorPane.leftAnchor="150.0"
+               AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="20.0"/>
+    <Button layoutX="643.0" layoutY="39.0" mnemonicParsing="false" onAction="#selectVectorAction" prefWidth="140.0"
+            text="Select FASTA file" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0"/>
+    <Pane layoutX="68.0" layoutY="40.0" opacity="0.03" prefHeight="160.0" style="-fx-background-color: red;"
+          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0"/>
+    <Label fx:id="countMerMutantLabelID" layoutX="26.0" layoutY="72.0" text="Mutant" textFill="RED"
+           AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="70.0">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Label>
+    <Label layoutX="75.0" layoutY="110.0" text="Read files:" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="110.0"/>
+    <Button layoutX="75.0" layoutY="140.0" mnemonicParsing="false" onAction="#clearMutantReadAction" prefWidth="60.0"
+            text="Clear" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="140.0"/>
+    <TextArea fx:id="mutantFilesID" editable="false" layoutX="66.0" layoutY="154.0" prefHeight="125.0"
+              promptText="Select FASTQ files (right button)" AnchorPane.leftAnchor="150.0"
+              AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="80.0"/>
+    <Button layoutX="780.0" layoutY="130.0" mnemonicParsing="false" onAction="#selectMutantReadAction" prefWidth="140.0"
+            text="Select FASTQ files" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="130.0"/>
+    <Pane layoutX="10.0" layoutY="230.0" opacity="0.03" prefHeight="135.0" style="-fx-background-color: blue;"
+          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="230.0"/>
+    <Label fx:id="countMerWildTypeLabelID" layoutX="20.0" layoutY="240.0" text="Wild type" textFill="BLUE"
+           AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="240.0">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Label>
+    <Label layoutX="75.0" layoutY="270.0" text="Read files:" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="270.0"/>
+    <Button layoutX="75.0" layoutY="300.0" mnemonicParsing="false" onAction="#clearWildTypeReadAction" prefWidth="60.0"
+            text="Clear" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="300.0"/>
+    <TextArea fx:id="wildTypeFilesID" editable="false" layoutX="150.0" layoutY="250.0" prefHeight="100.0"
+              promptText="Select FASTQ files (right button)" AnchorPane.leftAnchor="150.0"
+              AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="250.0"/>
+    <Button layoutX="780.0" layoutY="290.0" mnemonicParsing="false" onAction="#selectWildTypeReadAction"
+            prefWidth="140.0" text="Select FASTQ files" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="290.0"/>
+    <Label layoutX="55.0" layoutY="383.0" text="Output prefix:" AnchorPane.bottomAnchor="205.0"
+           AnchorPane.leftAnchor="55.0"/>
+    <TextField fx:id="outPrefixCountMerID" layoutX="150.0" layoutY="380.0" prefWidth="180.0" promptText="Any string"
+               AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="150.0"/>
+    <Label layoutX="430.0" layoutY="383.0" text="K-mer:" AnchorPane.bottomAnchor="205.0" AnchorPane.leftAnchor="430.0"/>
+    <Spinner fx:id="spinnerKmerID" editable="true" initialValue="20" layoutX="480.0" layoutY="380.0" max="1024" min="8"
+             prefWidth="80.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="480.0"/>
+    <Label layoutX="40.0" layoutY="433.0" text="Output directory:" AnchorPane.bottomAnchor="155.0"
+           AnchorPane.leftAnchor="40.0"/>
+    <TextField fx:id="outDirectoryCountMerID" editable="false" layoutX="150.0" layoutY="430.0"
+               promptText="Select output directory (right button)" AnchorPane.bottomAnchor="150.0"
+               AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="180.0"/>
+    <Button layoutX="780.0" layoutY="430.0" mnemonicParsing="false" onAction="#selectOutDirectoryCountMerAction"
+            prefWidth="140.0" text="Select directory" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="20.0"/>
+    <Label layoutX="240.0" layoutY="500.0" text="Maximum number of  threads:" AnchorPane.bottomAnchor="55.0"
+           AnchorPane.rightAnchor="550.0"/>
+    <Spinner fx:id="spinnerThreadsID" initialValue="8" layoutX="406.0" layoutY="496.0" max="128" min="1"
+             prefWidth="80.0" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="460.0"/>
+    <Button fx:id="stopCountMerID" disable="true" layoutX="659.0" layoutY="496.0" mnemonicParsing="false"
+            onAction="#stopCountMerAction" prefWidth="60.0" text="Stop" AnchorPane.bottomAnchor="50.0"
+            AnchorPane.rightAnchor="240.0"/>
+    <Button fx:id="executeCountMerID" layoutX="720.0" layoutY="496.0" mnemonicParsing="false"
+            onAction="#executeCountMerAction" prefWidth="200.0" text="Execute" AnchorPane.bottomAnchor="50.0"
+            AnchorPane.rightAnchor="20.0"/>
+    <ProgressBar fx:id="progressID" layoutX="183.0" layoutY="564.0" progress="0.0" AnchorPane.bottomAnchor="25.0"
+                 AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+    <CheckBox fx:id="checkOutsideKmerID" layoutX="39.0" layoutY="474.0" mnemonicParsing="false" selected="true"
+              text="Outside the k-mer sequences" textFill="GREEN" AnchorPane.bottomAnchor="105.0"
+              AnchorPane.leftAnchor="20.0">
+        <font>
+            <Font size="14.0"/>
+        </font>
+    </CheckBox>
+    <Label layoutX="282.0" layoutY="487.0" text="Threshold by FDR:" AnchorPane.bottomAnchor="105.0"
+           AnchorPane.rightAnchor="550.0"/>
+    <Spinner fx:id="spinnerFdrID" amountToStepBy="0.01" editable="true" initialValue="0.01" layoutX="396.0"
+             layoutY="483.0" max="1.0" min="0.0" prefWidth="80.0" AnchorPane.bottomAnchor="100.0"
+             AnchorPane.rightAnchor="460.0"/>
+    <Label layoutX="507.0" layoutY="479.0" text="Number of bases on each side:" AnchorPane.bottomAnchor="105.0"
+           AnchorPane.rightAnchor="270.0"/>
+    <Spinner fx:id="spinnerBasesID" initialValue="5" layoutX="692.0" layoutY="483.0" max="512" min="1" prefWidth="80.0"
+             AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="180.0"/>
+    <Label fx:id="messageID" disable="true" layoutX="470.0" layoutY="567.0" style="-fx-text-fill: blue;" text="Message"
+           AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="20.0"/>
+</AnchorPane>

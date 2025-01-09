@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane fx:id="mainPaneID" prefHeight="605.0" prefWidth="940.0" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="GenEditScan.DrawGraphController">
+    <VBox fx:id="vBoxChartID" layoutX="189.0" layoutY="11.0" AnchorPane.bottomAnchor="140.0"
+          AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="10.0">
+        <LineChart fx:id="lineChartUpperID" animated="false" createSymbols="false">
+            <xAxis>
+                <NumberAxis side="BOTTOM" fx:id="xupperAxis"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis fx:id="yupperAxis" side="LEFT"/>
+            </yAxis>
+            <VBox.margin>
+                <Insets/>
+            </VBox.margin>
+        </LineChart>
+        <AreaChart fx:id="areaChartLowerID" animated="false" createSymbols="false">
+            <xAxis>
+                <NumberAxis side="BOTTOM" fx:id="xlowerAxis"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis fx:id="ylowerAxis" side="LEFT"/>
+            </yAxis>
+        </AreaChart>
+    </VBox>
+    <Pane layoutX="650.0" layoutY="15.0" opacity="0.03" prefHeight="180.0" prefWidth="280.0"
+          style="-fx-background-color: green;" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="15.0"/>
+    <Label fx:id="yupperAxisLabelID" layoutX="662.0" layoutY="30.0" text="Y-axis (upper)" AnchorPane.rightAnchor="205.0"
+           AnchorPane.topAnchor="30.0"/>
+    <TextField fx:id="yupperAxisTitleID" layoutX="740.0" layoutY="25.0" prefWidth="180.0" promptText="Y-axis"
+               text="K-mer counts" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="25.0"/>
+    <RadioButton fx:id="radioYupperAutoID" layoutX="690.0" layoutY="56.0" mnemonicParsing="false" selected="true"
+                 text="auto" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="56.0">
+        <toggleGroup>
+            <ToggleGroup fx:id="toggleYupperAxis"/>
+        </toggleGroup>
+    </RadioButton>
+    <RadioButton fx:id="radioYupperSpecifyID" layoutX="693.0" layoutY="86.0" mnemonicParsing="false" text="specify  :"
+                 toggleGroup="$toggleYupperAxis" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="86.0"/>
+    <TextField fx:id="yupperAxisFromID" layoutX="770.0" layoutY="85.0" onMouseClicked="#yupperAxisClicked"
+               prefWidth="70.0" text="0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="85.0"/>
+    <Label layoutX="842.0" layoutY="88.0" text="-" AnchorPane.rightAnchor="93.0" AnchorPane.topAnchor="88.0"/>
+    <TextField fx:id="yupperAxisToID" layoutX="850.0" layoutY="85.0" onMouseClicked="#yupperAxisClicked"
+               prefWidth="70.0" text="100" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="85.0"/>
+    <Label fx:id="mutantLabelID" layoutX="752.0" layoutY="128.0" text="Mutant  :" AnchorPane.rightAnchor="140.0"
+           AnchorPane.topAnchor="128.0"/>
+    <ColorPicker fx:id="colorPickerMutantID" layoutX="810.0" layoutY="125.0" onAction="#colorPickerMutantAction"
+                 prefWidth="110.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="125.0">
+        <value>
+            <Color red="1.0" blue="1.0"/>
+        </value>
+    </ColorPicker>
+    <Label fx:id="wildTypeLabelID" layoutX="740.0" layoutY="163.0" text="Wild type  :" AnchorPane.rightAnchor="140.0"
+           AnchorPane.topAnchor="163.0"/>
+    <ColorPicker fx:id="colorPickerWildTypeID" layoutX="810.0" layoutY="160.0" onAction="#colorPickerWildTypeAction"
+                 prefWidth="110.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="160.0">
+        <value>
+            <Color green="0.5" blue="0.5"/>
+        </value>
+    </ColorPicker>
+    <Pane layoutX="650.0" layoutY="240.0" opacity="0.03" prefHeight="210.0" prefWidth="280.0"
+          style="-fx-background-color: orange;" AnchorPane.bottomAnchor="155.0" AnchorPane.rightAnchor="10.0"/>
+    <Label fx:id="ylowerAxisLabelID" layoutX="662.0" layoutY="208.0" text="Y-axis (lower)"
+           AnchorPane.bottomAnchor="380.0" AnchorPane.rightAnchor="207.0"/>
+    <ComboBox fx:id="ylowerAxisTitleID" layoutX="740.0" layoutY="205.0" prefWidth="180.0"
+              AnchorPane.bottomAnchor="375.0" AnchorPane.rightAnchor="20.0">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="FDR (-log10)"/>
+                <String fx:value="Bonferroni (-log10)"/>
+                <String fx:value="P-value (-log10)"/>
+                <String fx:value="G-statistics"/>
+            </FXCollections>
+        </items>
+        <value>
+            <String fx:value="FDR (-log10)"/>
+        </value>
+    </ComboBox>
+    <RadioButton fx:id="radioYlowerAutoID" layoutX="690.0" layoutY="238.0" mnemonicParsing="false" selected="true"
+                 text="auto" AnchorPane.bottomAnchor="350.0" AnchorPane.rightAnchor="205.0">
+        <toggleGroup>
+            <ToggleGroup fx:id="toggleYlowerAxis"/>
+        </toggleGroup>
+    </RadioButton>
+    <RadioButton fx:id="radioYlowerSpecifyID" layoutX="693.0" layoutY="268.0" mnemonicParsing="false" text="specify  :"
+                 toggleGroup="$toggleYlowerAxis" AnchorPane.bottomAnchor="320.0" AnchorPane.rightAnchor="180.0"/>
+    <TextField fx:id="ylowerAxisFromID" layoutX="770.0" layoutY="265.0" onMouseClicked="#ylowerAxisClicked"
+               prefWidth="70.0" text="0" AnchorPane.bottomAnchor="315.0" AnchorPane.rightAnchor="100.0"/>
+    <Label layoutX="842.0" layoutY="266.0" text="-" AnchorPane.bottomAnchor="322.0" AnchorPane.rightAnchor="93.0"/>
+    <TextField fx:id="ylowerAxisToID" layoutX="850.0" layoutY="265.0" onMouseClicked="#ylowerAxisClicked"
+               prefWidth="70.0" text="20" AnchorPane.bottomAnchor="315.0" AnchorPane.rightAnchor="20.0"/>
+    <Label fx:id="significantLabelID" layoutX="735.0" layoutY="308.0" text="Significant  :"
+           AnchorPane.bottomAnchor="280.0" AnchorPane.rightAnchor="140.0"/>
+    <ColorPicker fx:id="colorPickerSignificantID" layoutX="810.0" layoutY="305.0"
+                 onAction="#colorPickerSignificantAction" prefWidth="110.0" AnchorPane.bottomAnchor="275.0"
+                 AnchorPane.rightAnchor="20.0">
+        <value>
+            <Color red="1.0"/>
+        </value>
+    </ColorPicker>
+    <Label fx:id="notSignificantLabelID" layoutX="713.0" layoutY="343.0" text="Not significant  :"
+           AnchorPane.bottomAnchor="245.0" AnchorPane.rightAnchor="140.0"/>
+    <ColorPicker fx:id="colorPickerNotSignificantID" layoutX="810.0" layoutY="340.0"
+                 onAction="#colorPickerNotSignificantAction" prefWidth="110.0" AnchorPane.bottomAnchor="240.0"
+                 AnchorPane.rightAnchor="20.0">
+        <value>
+            <Color/>
+        </value>
+    </ColorPicker>
+    <Label fx:id="thresholdLabelID" layoutX="668.0" layoutY="377.0" text="Threshold  :" AnchorPane.bottomAnchor="211.0"
+           AnchorPane.rightAnchor="210.0"/>
+    <TextField fx:id="thresholdValueID" layoutX="740.0" layoutY="375.0" prefWidth="60.0" text="0.01"
+               AnchorPane.bottomAnchor="205.0" AnchorPane.rightAnchor="140.0"/>
+    <ColorPicker fx:id="colorPickerThresholdID" layoutX="810.0" layoutY="375.0" onAction="#colorPickerThresholdAction"
+                 prefWidth="110.0" AnchorPane.bottomAnchor="205.0" AnchorPane.rightAnchor="20.0">
+        <value>
+            <Color red="0.5"/>
+        </value>
+    </ColorPicker>
+    <Label layoutX="658.0" layoutY="423.0" text="X-axis" AnchorPane.bottomAnchor="165.0" AnchorPane.rightAnchor="250.0"
+           fx:id="xAxisLabelID"/>
+    <TextField layoutX="740.0" layoutY="420.0" prefWidth="180.0" promptText="X-axis" text="Vector position (bp)"
+               AnchorPane.bottomAnchor="160.0" AnchorPane.rightAnchor="20.0" fx:id="xAxisTitleID"/>
+    <RadioButton fx:id="radioXAutoID" layoutX="690.0" layoutY="452.0" mnemonicParsing="false" selected="true"
+                 text="auto" AnchorPane.bottomAnchor="136.0" AnchorPane.rightAnchor="205.0">
+        <toggleGroup>
+            <ToggleGroup fx:id="toggleXAxis"/>
+        </toggleGroup>
+    </RadioButton>
+    <RadioButton fx:id="radioXSpecifyID" layoutX="693.0" layoutY="482.0" mnemonicParsing="false" text="specify  :"
+                 toggleGroup="$toggleXAxis" AnchorPane.bottomAnchor="106.0" AnchorPane.rightAnchor="180.0"/>
+    <TextField layoutX="770.0" layoutY="480.0" onMouseClicked="#xAxisClicked" prefWidth="70.0" text="0"
+               AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="100.0" fx:id="xAxisFromID"/>
+    <Label layoutX="842.0" layoutY="480.0" text="-" AnchorPane.bottomAnchor="108.0" AnchorPane.rightAnchor="93.0"/>
+    <TextField layoutX="850.0" layoutY="480.0" onMouseClicked="#xAxisClicked" prefWidth="70.0" text="20000"
+               AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="20.0" fx:id="xAxisToID"/>
+    <CheckBox fx:id="checkRotateYticksID" layoutX="40.0" layoutY="483.0" mnemonicParsing="false"
+              onAction="#checkRotateYticksAction" selected="true" text="Rotate yticks" AnchorPane.bottomAnchor="105.0"
+              AnchorPane.leftAnchor="40.0"/>
+    <Button layoutX="150.0" layoutY="480.0" mnemonicParsing="false" onAction="#saveGraphAction" prefWidth="140.0"
+            text="Save graph" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="150.0"/>
+    <Button layoutX="420.0" layoutY="480.0" mnemonicParsing="false" onAction="#clearGraphAction" prefWidth="60.0"
+            text="Clear" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="460.0"/>
+    <Button layoutX="500.0" layoutY="480.0" mnemonicParsing="false" onAction="#redrawAction" prefWidth="140.0"
+            text="Redraw" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="300.0"/>
+    <Label layoutX="60.0" layoutY="523.0" text="Statistics file:" AnchorPane.bottomAnchor="65.0"
+           AnchorPane.leftAnchor="60.0"/>
+    <TextField fx:id="statisticsFileID" editable="false" layoutX="150.0" layoutY="520.0"
+               promptText="Select statistics file (right button)" AnchorPane.bottomAnchor="60.0"
+               AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="180.0"/>
+    <Button layoutX="780.0" layoutY="520.0" mnemonicParsing="false" onAction="#selectStatisticsFileAction"
+            prefWidth="140.0" text="Select statistics.txt" AnchorPane.bottomAnchor="60.0"
+            AnchorPane.rightAnchor="20.0"/>
+    <TextField fx:id="outsideFileID" layoutX="146.0" layoutY="556.0" promptText="Select outside file (right button)"
+               AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="180.0"/>
+    <Button layoutX="779.0" layoutY="560.0" mnemonicParsing="false" onAction="#selectOutsideFileAction"
+            prefWidth="140.0" text="Select outside.txt" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0"/>
+    <Button fx:id="buttonOutsideFileID" disable="true" layoutX="14.0" layoutY="540.0" mnemonicParsing="false"
+            onAction="#outsideFileAction" text="Outside file:" AnchorPane.bottomAnchor="20.0"
+            AnchorPane.leftAnchor="55.0"/>
+</AnchorPane>

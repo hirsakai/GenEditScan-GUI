@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="mainPaneID" prefHeight="960.0" prefWidth="960.0" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="GenEditScan.AlignmentDialogueController">
+    <Label fx:id="vectorPositionID" layoutX="54.0" layoutY="40.0" text="Vector position : " AnchorPane.leftAnchor="30.0"
+           AnchorPane.topAnchor="20.0"/>
+    <Label fx:id="kmerID" layoutX="364.0" layoutY="20.0" text="K-mer : " AnchorPane.leftAnchor="360.0"
+           AnchorPane.topAnchor="20.0"/>
+    <Label fx:id="thresholdID" layoutX="364.0" layoutY="20.0" text="Threshold : " AnchorPane.rightAnchor="250.0"
+           AnchorPane.topAnchor="20.0"/>
+    <Label fx:id="basesID" layoutX="440.0" layoutY="20.0" text="Add bases" AnchorPane.rightAnchor="30.0"
+           AnchorPane.topAnchor="20.0"/>
+    <TableView fx:id="tableViewID" layoutX="101.0" layoutY="86.0" prefHeight="480.0" prefWidth="769.0"
+               AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0"
+               AnchorPane.topAnchor="60.0">
+      <columns>
+          <TableColumn fx:id="positionID" editable="false" maxWidth="100.0" minWidth="50.0" prefWidth="75.0"
+                       style="-fx-alignment: center;" text="Position"/>
+          <TableColumn fx:id="idID" editable="false" maxWidth="75.0" minWidth="25.0" prefWidth="50.0"
+                       style="-fx-alignment: center;" text="ID"/>
+          <TableColumn fx:id="sequenceID" minWidth="300.0" prefWidth="355.0"
+                       style="-fx-font-family: monospaced; -fx-font-weight: bold; -fx-alignment: center;"
+                       text="Sequence"/>
+          <TableColumn fx:id="mutantID" editable="false" maxWidth="100.0" minWidth="50.0" prefWidth="75.0"
+                       style="-fx-alignment: center;" text="Mutant"/>
+          <TableColumn fx:id="wildTypeID" editable="false" maxWidth="100.0" minWidth="50.0" prefWidth="75.0"
+                       style="-fx-alignment: center;" text="Wild type"/>
+          <TableColumn fx:id="pvalueID" editable="false" maxWidth="150.0" minWidth="50.0" prefWidth="90.0"
+                       text="P-value"/>
+          <TableColumn fx:id="fdrID" editable="false" maxWidth="150.0" minWidth="50.0" prefWidth="90.0" text="FDR"/>
+          <TableColumn fx:id="bonferroniID" editable="false" maxWidth="150.0" minWidth="50.0" prefWidth="90.0"
+                       text="Bonferroni"/>
+      </columns>
+    </TableView>
+    <Button cancelButton="true" defaultButton="true" layoutX="463.0" layoutY="225.0" mnemonicParsing="false"
+            onAction="#okAction" prefWidth="100.0" text="OK" AnchorPane.bottomAnchor="20.0"
+            AnchorPane.rightAnchor="20.0"/>
+</AnchorPane>

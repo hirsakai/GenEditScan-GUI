@@ -1,0 +1,55 @@
+/*
+ * GenEditScan-GUI
+ * Copyright 2019 National Agriculture and Food Research Organization (NARO)
+ */
+
+.root {
+    -fx-font-size: 13px;
+    -fx-font-family: serif;
+}
+
+.tab-header-background {
+    -fx-background-color: #E6E6E6;
+}
+
+.label, .button {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+// Effects of Buttons.
+.button:hover {
+    -fx-border-color:black;
+    -fx-border-width: 0 2 2 0;
+}
+
+#menuFileID, #menuHelpID, #countMerTabID, #drawGraphTabID {
+    -fx-font-size: 12px;
+    -fx-font-family: cursive;
+    -fx-font-weight: normal;
+}
+
+#countMerMutantLabelID, #countMerWildTypeLabelID, #alignmentMutantLabelID, #alignmentWildTypeLabelID {
+    -fx-font-size: 18px;
+    -fx-font-style: italic;
+}
+
+#lineChartUpper, #lineChartLower {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 -15 0;
+}
+
+.chart-vertical-grid-lines, .chart-horizontal-grid-lines {
+    -fx-stroke: transparent;
+}
+
+.thick-chart .chart-series-line {
+    -fx-stroke-width: 1px;
+}
+
+// Progress bar display settings.
+.progress-bar .bar {
+    -fx-padding:5px;
+    -fx-background-insets:0;
+}

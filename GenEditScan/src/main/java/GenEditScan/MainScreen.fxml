@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="mainPaneID" prefHeight="680.0" prefWidth="960.0"
+            style="-fx-border-color: green; -fx-background-color: #F2F2F2;" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml" fx:controller="GenEditScan.MainScreenController">
+    <MenuBar layoutX="112.0" layoutY="114.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
+        <Menu fx:id="menuFileID" mnemonicParsing="false" text="File">
+            <MenuItem mnemonicParsing="false" onAction="#importConfigAction" text="Import configuration file"/>
+            <MenuItem mnemonicParsing="false" onAction="#exportConfigAction" text="Export configuration file"/>
+            <MenuItem mnemonicParsing="false" onAction="#closeAction" text="Close"/>
+        </Menu>
+        <Menu fx:id="menuHelpID" mnemonicParsing="false" text="Help">
+            <MenuItem mnemonicParsing="false" onAction="#userGuideAction" text="User guide"/>
+            <MenuItem mnemonicParsing="false" onAction="#aboutAction" text="About"/>
+        </Menu>
+    </MenuBar>
+    <TabPane fx:id="mainTabPaneID" layoutX="115.0" layoutY="47.0" prefWidth="940.0"
+             style="-fx-tab-min-width:60; -fx-background-color: #FAFAFA;" tabClosingPolicy="UNAVAILABLE"
+             AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
+             AnchorPane.topAnchor="35.0">
+        <Tab fx:id="countMerTabID" text="Count mer">
+            <fx:include fx:id="countMer" source="CountMer.fxml"/>
+        </Tab>
+        <Tab fx:id="drawGraphTabID" text="Draw graph">
+            <fx:include fx:id="drawGraph" source="DrawGraph.fxml"/>
+        </Tab>
+    </TabPane>
+</AnchorPane>
